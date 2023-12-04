@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #222;
+    padding: 10px;
+    display: flex;
+    font-family: 'Bebas Neue';
+    align-items: center;
+    color: white;
+}
+
+header img {
+    width: 150px;
+}
+
+form {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #222;
+    border-radius: 20px;
+    display: flex;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+form input {
+    padding: 5px;
+    border: none;
+    outline: none;
+    flex: 1;
+}
+
+form button {
+    padding: 5px 10px;
+    background-color: #222;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: black;
+}
+
+div.lista {
+    padding: 5px;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+div.item {
+    padding: 10px;
+    text-align: center;
+    width: 200px;
+    border: 1px solid rgba(0, 0, 0, 0.363);
+    border-radius: 5px;
+    margin: 20px;
+    font-family: 'Bebas Neue';
+    box-shadow: 10px 10px  5px rgba(0, 0, 0, 0.363);
+}
+
+div.item:hover {
+    transform: scale(1.1);
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+div.item img {
+    width: 100%;
+}

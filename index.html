@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca por Filmes</title>
+    <meta name="description" content="Site de busca de filmes desenvolvido para atividade de Programação Web">
+    <link rel="stylesheet" href="/css/style.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+</head>
+<body>
+    <header>
+        <img src="images/filmfinder-logo.png" class= "animate__animated animate__fadeInLeftBig">
+        <h1 class= "animate__animated animate__fadeInLeftBig">FILM FINDER</h1>
+    </header>
+
+    <form>
+        <input type="text" id="pesquisa" placeholder="Pesquise por um filme">
+        <button>Pesquisar</button>
+    </form>
+ 
+    <div class="lista"></div>
+</body>
+</html>
+
+<script>
+
+const frmPesquisa = document.querySelector("form");
+const apiKey = '4e42412';
+
+frmPesquisa.onsubmit = (ev) => {
+    ev.preventDefault();
+
+    const pesquisa = ev.target.pesquisa.value;
+
+    if (pesquisa == "") {
+        alert('Preencha o campo!');
+        return;
+    }
+
+    fetch(`https://www.omdbapi.com/?s=${pesquisa}&apikey=${apiKey}`)
+    .then(result => result.json())
+    .then(json => carregaLista(json));
+}
+
+const carregaLista = (json) => {
+    const lista = document.querySelector("div.lista");
+    lista.innerHTML="";
+
+    if (json.Response == 'False') {
+        alert('Nenhum filme encontrado.');
+        return;
+    }
+
+    json.Search.forEach(element => {
+
+        let item = document.createElement("div");
+        item.classList.add("item");
+
+        item.innerHTML = `<img src="${element.Poster}" /><h2>${element.Title}</h2>`
+        
+        lista.appendChild(item);
+    })
+}
+</script>
